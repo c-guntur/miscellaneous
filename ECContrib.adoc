@@ -1,3 +1,8 @@
+image::https://github.com/eclipse/eclipse-collections/blob/master/artwork/eclipse-collections-logo.png[Eclipse COllections Logo, 300,align="center"] 
+
+
+
+
 . Fork from the main project. We use the master branch in this example. +
 **Link**: https://github.com/eclipse/eclipse-collections
 
