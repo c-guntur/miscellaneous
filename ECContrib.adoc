@@ -1,0 +1,42 @@
+. Fork from the main project. We use the master branch in this example. +
+**Link**: https://github.com/eclipse/eclipse-collections
+
+. Define *upstream* git remote +
+`*git remote add upstream https://github.com/eclipse/eclipse-collections.git*`
+
+. Check out your fork and make the changes
+
+. Commit and push changes to fork (-s is for signoff) +
+`*git commit -m "message" -s*`
+
+. When you're ready for the pull request, rebase +
+`*git rebase -i upstream/master*`
+
+. The interactive rebase is a mechanism to squash all individual commits of the fork to one single commit.
+
+. Amend the commit to sign off (if you did not signoff earlier) +
+`*git commit --amend --signoff*`
+
+. Once completed, push the changes back to your fork. +
+`*git push -f origin master*`
+
+. Issue a Pull request via the Github UI
+
+. Pull requests may result in review comments.
+
+. Make necessary changes to the code.
+
+. Commit changes. +
+`*git commit -m "message" -s*`
+
+. Rerun a rebase. +
+`*git rebase -i upstream/master*`
+
+. Compact the commits into one commit.
+
+. Push changes back to the fork. +
+`*git push -f origin master*`
+
+. Pull request is automatically updated with the the recent changes.
+
+. Rinse an repeat until review is signed off.
