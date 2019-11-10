@@ -27,7 +27,7 @@ image::https://github.com/eclipse/eclipse-collections/blob/master/artwork/eclips
 
 . Issue a Pull request via the Github UI
 
-. Pull requests may result in review comments.
+. Pull requests may result in review comments or build failures.
 
 . Make necessary changes to the code.
 
