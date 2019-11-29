@@ -15,7 +15,7 @@ Steps to install
 .. Edit `*ZEP_DIR/conf/zeppelin-site.xml*`
 .. Alter the port number for `zeppelin.server.port`. I altered it to 17780.
 .. [Optional] Alter the port number for `zeppelin.server.ssl.port`. I altered it to 17443.
-. Download the note linked: 
+. Download the note linked: include::Benchmarks_Mini_CSV.json[]
 . Launch Zeppelin
 .. Navigate to the `*ZEP_DIR/bin*`.
 .. Launch zeppelin daemon: `*./zeppelin-daemon.sh start*`
