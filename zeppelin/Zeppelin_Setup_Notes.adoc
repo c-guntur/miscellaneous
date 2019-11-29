@@ -1,0 +1,27 @@
+= Steps to setup Apache Zeppelin to run Benchmarks
+== Installation
+Steps to install
+. Download Apache Zeppelin 
+.. Navigate to: http://zeppelin.apache.org/download.html.
+.. Download the All tar.gz. 
+.. For purposes of this demo, I used version 0.8.2 released on Sep 29, 2019
+. Unzip the tarball onto a local drive to a location that we will refer to as *ZEP_DIR*.
+. Modify the JDK used
+.. Edit `*ZEP_DIR/bin/common.sh*`
+.. Search for the JAVA_HOME reference and export JDK 8 instance as JAVA_HOME.
+.. In my case, I used JDK 1.8.0_221 `*export JAVA_HOME=/Library/Java/JavaVirtualMachines/oraclejdk1.8.0_221.jdk/Contents/Home/*` at Line 144.
+. Copy the configuration template to change values
+.. Copy the template file `*zeppelin-site.xml.template*` to `*zeppelin-site.xml*` under `*ZEP_DIR/conf*`
+.. Edit `*ZEP_DIR/conf/zeppelin-site.xml*`
+.. Alter the port number for `zeppelin.server.port`. I altered it to 17780.
+.. [Optional] Alter the port number for `zeppelin.server.ssl.port`. I altered it to 17443.
+. Download the note linked: 
+. Launch Zeppelin
+.. Navigate to the `*ZEP_DIR/bin*`.
+.. Launch zeppelin daemon: `*./zeppelin-daemon.sh start*`
+. Open a browser to http://localhost:17780
+. Import the recently downloaded note.
+. Alter the directory to point to where the `*benchmark-results*` directory exists.
+. Shutdown procedure
+.. Launch a terminal and navigate to `*ZEP_DIR/bin*`
+.. Run: `*./zeppelin-daemon.sh stop*`
