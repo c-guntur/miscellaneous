@@ -15,12 +15,12 @@ Steps to install
 .. Edit `*ZEP_DIR/conf/zeppelin-site.xml*`
 .. Alter the port number for `zeppelin.server.port`. I altered it to 17780.
 .. [Optional] Alter the port number for `zeppelin.server.ssl.port`. I altered it to 17443.
-. Download the note linked: include::Benchmarks_Mini_CSV.json[]
+. Download the note linked: link:Benchmarks_Mini_CSV.json[Benchmarks_Mini_CSV.json]
 . Launch Zeppelin
 .. Navigate to the `*ZEP_DIR/bin*`.
 .. Launch zeppelin daemon: `*./zeppelin-daemon.sh start*`
 . Open a browser to http://localhost:17780
-. Import the recently downloaded note.
+. Import the recently downloaded note (Benchmarks_Mini_CSV.json).
 . Alter the directory to point to where the `*benchmark-results*` directory exists.
 . Shutdown procedure
 .. Launch a terminal and navigate to `*ZEP_DIR/bin*`
