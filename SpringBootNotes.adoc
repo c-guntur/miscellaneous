@@ -86,3 +86,18 @@ Testing AutoConfigurations require the use of an `ApplicationContextRunner` whic
 * `@ConditionalOnSingleCandidate(DataSource.class)`: Matches if there is exactly one primary DataSource bean specified in your application.
 * `@ConditionalOnWebApplication`: The condition is true if the application is a web application.
 
+== Creating Spring Boot Starters
+
+Spring Boot starters are meant to auto-configure and pre-cstomize the infrastructure of a given technology. A starter can contain:
+* `autoconfigure`d module
+* `starter` module providing a dependency to the `autoconfigure` moduleand additional dependencies
+
+The modules don't necessarily have to be separate, but it is best practice to do so. 
+
+Starter naming should be unique, kebab-cased, and suffixed with `*-spring-boot-starter*` for consistency. Per the best practice, the autoconfigure module should have the same name as the starter, but with a suffix of `*-spring-boot*`.
+
+Configuration keys should have a unique namespace and possibl unique keys.
+
+Dependencies for the starter should be marked as optional, so Spring Boot does not load them incase the Conditionals for auto-configuring are not met.
+
+There are Javadoc rules to be followed when documeting the s
