@@ -30,6 +30,8 @@ AutoConfiguration is simply a @Configuration which is listed in the META-INF/spr
 
 A Property Source can be any one standard ones that Spring Boot looks up, in an order of precedence. The lowest numbered ones are overridden by the highe numbered ones.
 
+For a full reference, check out the https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config[Spring Reference to External Configuration]
+
 . Default properties (specified by setting SpringApplication.setDefaultProperties).
 . @PropertySource annotations on your @Configuration classes. Please note that such property sources are not added to the Environment until the application context is being refreshed. This is too late to configure certain properties such as logging.* and spring.main.* which are read before refresh begins.
 . Config data (such as application.properties files)
