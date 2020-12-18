@@ -7,25 +7,6 @@
 	3. Check @Conditionals
 	4. Classpath scanning and loadig Bean/Component/Configuration objects, other stereotpes extending Component (and from 2.2, loads ConfigurationProperties)
 
-== AutoConfiguration
-
-AutoConfiguration is simply a @Configuration which is listed in the META-INF/spring.factories
-
-=== Conditionals
-* `@ConditionalOnBean(DataSource.class)`: The condition is true only if the user specified a DataSource @Bean in a @Configuration.
-* `@ConditionalOnClass(DataSource.class)`: The condition is true if the DataSource class is on the classpath.
-* `@ConditionalOnCloudPlatform(CloudPlatform.Heroku)`: The condition is true if the CloudPlatform is set to Heroku.
-* `@ConditionalOnExpression("someSpELExpression)`: The condition is true if the SpEL expression is true.
-* `@ConditionalOnJava(JavaVersion.EIGHT)`: The condition is true if the current Java version is 8.
-* `@ConditionalOnJndi("java:comp/env/ejb/myEJB")`: The condition is true if the specified JNDI context exists.
-* `@ConditionalOnMissingBean(DataSource.class)`: The condition is true if the user did not specify a DataSource @Bean in any @Configuration.
-* `@ConditionalOnMissingClass(DataSource.class)`: The condition is true if the DataSource class is not on the classpath.
-* `@ConditionalOnNotWebApplication`: The condition is true if the application is not a web application.
-* `@ConditionalOnProperty("my.property")`: The condition is true if my.property is set.
-* `@ConditionalOnResource("classpath:my.properties")`: The condition is true if my.properties exists.
-* `@ConditionalOnSingleCandidate(DataSource.class)`: Matches if there is exactly one primary DataSource bean specified in your application.
-* `@ConditionalOnWebApplication`: The condition is true if the application is a web application.
-
 == Property Sources
 
 A Property Source can be any one standard ones that Spring Boot looks up, in an order of precedence. The lowest numbered ones are overridden by the highe numbered ones.
@@ -79,4 +60,27 @@ Should you declare a `@ConfigurationProperties`, unless you specify `@SpringBoot
 
 ConfigurationProperties require mutators to set values. In order to achieve immutability, a `@ConstructorBinding` can be used (either on the class if there is only one constructor, and on a constructor if there are more than one). An `@EnableConfigurationProperties` is most-likely required when using `@ConstructorBinding`, since beans created using `@Component` or `@Bean` and those using `@Import` will not know how to bind. 
 
+
+== AutoConfiguration
+
+AutoConfiguration is simply a @Configuration which is listed in the META-INF/spring.factories. Per the reference guide, AutoConfigurations should never be a target of component scanning and should *only* be loaded from the spring.factories. For dependent AutoConfigurations, use the `@AutoConfigureAfter` or `@AutoConfigureBefore` annotations at the Configuration's class. There is an additional `@AutoConfigureOrder` that can be used.
+
+=== Testing
+
+Testing AutoConfigurations require the use of an `ApplicationContextRunner` which provides a static builder `withConfiguration(AutoConfiguratoins.of(...))`. To read in more detail, visit the https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-test-autoconfig[Testing Spring Boot Auto Configurations].
+
+=== Conditionals
+* `@ConditionalOnBean(DataSource.class)`: The condition is true only if the user specified a DataSource @Bean in a @Configuration.
+* `@ConditionalOnClass(DataSource.class)`: The condition is true if the DataSource class is on the classpath.
+* `@ConditionalOnCloudPlatform(CloudPlatform.Heroku)`: The condition is true if the CloudPlatform is set to Heroku.
+* `@ConditionalOnExpression("someSpELExpression)`: The condition is true if the SpEL expression is true.
+* `@ConditionalOnJava(JavaVersion.EIGHT)`: The condition is true if the current Java version is 8.
+* `@ConditionalOnJndi("java:comp/env/ejb/myEJB")`: The condition is true if the specified JNDI context exists.
+* `@ConditionalOnMissingBean(DataSource.class)`: The condition is true if the user did not specify a DataSource @Bean in any @Configuration.
+* `@ConditionalOnMissingClass(DataSource.class)`: The condition is true if the DataSource class is not on the classpath.
+* `@ConditionalOnNotWebApplication`: The condition is true if the application is not a web application.
+* `@ConditionalOnProperty("my.property")`: The condition is true if my.property is set.
+* `@ConditionalOnResource("classpath:my.properties")`: The condition is true if my.properties exists.
+* `@ConditionalOnSingleCandidate(DataSource.class)`: Matches if there is exactly one primary DataSource bean specified in your application.
+* `@ConditionalOnWebApplication`: The condition is true if the application is a web application.
 
