@@ -63,7 +63,7 @@ ConfigurationProperties require mutators to set values. In order to achieve immu
 
 == AutoConfiguration
 
-AutoConfiguration is simply a @Configuration which is listed in the META-INF/spring.factories. Per the reference guide, AutoConfigurations should never be a target of component scanning and should *only* be loaded from the spring.factories. For dependent AutoConfigurations, use the `@AutoConfigureAfter` or `@AutoConfigureBefore` annotations at the Configuration's class. There is an additional `@AutoConfigureOrder` that can be used.
+AutoConfiguration is simply a @Configuration which is listed in the `*META-INF/spring.factories*`. Per the reference guide, AutoConfigurations should never be a target of component scanning and should *only* be loaded from the `spring.factories`. For dependent AutoConfigurations, use the `@AutoConfigureAfter` or `@AutoConfigureBefore` annotations at the Configuration's class. There is an additional `@AutoConfigureOrder` that can be used.
 
 === Testing
 
