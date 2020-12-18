@@ -60,6 +60,8 @@ Should you declare a `@ConfigurationProperties`, unless you specify `@SpringBoot
 
 ConfigurationProperties require mutators to set values. In order to achieve immutability, a `@ConstructorBinding` can be used (either on the class if there is only one constructor, and on a constructor if there are more than one). An `@EnableConfigurationProperties` is most-likely required when using `@ConstructorBinding`, since beans created using `@Component` or `@Bean` and those using `@Import` will not know how to bind. 
 
+While there are default bindings for Durations and Byte Sizes, there is also a possibility for custom conversions. Use the `@ConfigurationPropertiesBinding` on the class, implement a `Converter<S, T>` and override the `T convert(S)`
+
 
 == AutoConfiguration
 
