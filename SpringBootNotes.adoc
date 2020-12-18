@@ -53,24 +53,24 @@ A Property Source can be any one standard ones that Spring Boot looks up, in an 
 
 `ConfigurationProperties` allow for defining a new hierarchy of configurations that share a common prefix. These are best used for custom property loading. Some interesting rules apply:
 
-1. For a camelCase property `preferredGreeting` defined in a ConfigurationProperties class defined with prefix `xyz`:
+* For a camelCase property `preferredGreeting` defined in a ConfigurationProperties class defined with prefix `xyz`: +
 
 	@ConfigurationProperties(prefix="xyz")
 	public class CustomProperties {
 		private String preferredGreeting;
 	}
 
-	Spring has a set of relaxed-binding rules. These include the following possible definitions where configured:
-	preferredGreeting
-	preferred-greeting
-	preferred_greeting
-	preferredgreeting
-	PREFERRED_GREETING
+Spring has a set of relaxed-binding rules. These include the following possible definitions where configured:
+preferredGreeting
+preferred-greeting
+preferred_greeting
+preferredgreeting
+PREFERRED_GREETING
 
-	. Properties Files:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
-	. YAML Files:: allow camel case, kebab case, or underscore notation - uses standard YAML list syntax or comma-separated values
-	. Environment Variables:: allow upper case format with underscore as the delimiter. _ should not be used within a property name - uses numeric values surrounded by underscores, such as XYZ_NICKNAME_1_OTHER = xyz.nickName[1].other
-	. System properties:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
+** Properties Files:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
+** YAML Files:: allow camel case, kebab case, or underscore notation - uses standard YAML list syntax or comma-separated values
+** Environment Variables:: allow upper case format with underscore as the delimiter. _ should not be used within a property name - uses numeric values surrounded by underscores, such as XYZ_NICKNAME_1_OTHER = xyz.nickName[1].other
+** System properties:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
 
 2. Should you declare a `@ConfigurationProperties`, unless you specify `@SpringBootApplication`, you should specify a `@EnableConfigurationProperties`. A prime example of where this is useful, is in the `@SpringBootTest(classes=CustomProperties.class)`, which, is not auto-annotated with `@EnableConfigurationProperties`. The `@Value` annotation that reads a specific value from a property source, is somewhat different since it does not actually need field injection as is produced by using `@ConfigurationPrperties`.
 
