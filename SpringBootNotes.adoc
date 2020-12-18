@@ -100,4 +100,4 @@ Configuration keys should have a unique namespace and possibl unique keys.
 
 Dependencies for the starter should be marked as optional, so Spring Boot does not load them incase the Conditionals for auto-configuring are not met.
 
-There are Javadoc rules to be followed when documeting the s
+There are Javadoc rules to be followed when documeting the starter. More on this at: https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-custom-starter[Creating a Custom Starter].
