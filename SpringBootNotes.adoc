@@ -12,48 +12,48 @@
 AutoConfiguration is simply a @Configuration which is listed in the META-INF/spring.factories
 
 === Conditionals
-	@ConditionalOnBean(DataSource.class). The condition is true only if the user specified a DataSource @Bean in a @Configuration.
-	@ConditionalOnClass(DataSource.class). The condition is true if the DataSource class is on the classpath.
-	@ConditionalOnCloudPlatform(CloudPlatform.Heroku). The condition is true if the CloudPlatform is set to Heroku.
-	@ConditionalOnExpression("someSpELExpression). The condition is true if the SpEL expression is true.
-	@ConditionalOnJava(JavaVersion.EIGHT). The condition is true if the current Java version is 8.
-	@ConditionalOnJndi("java:comp/env/ejb/myEJB"). The condition is true if the specified JNDI context exists.
-	@ConditionalOnMissingBean(DataSource.class). The condition is true if the user did not specify a DataSource @Bean in any @Configuration.
-	@ConditionalOnMissingClass(DataSource.class). The condition is true if the DataSource class is not on the classpath.
-	@ConditionalOnNotWebApplication. The condition is true if the application is not a web application.
-	@ConditionalOnProperty("my.property"). The condition is true if my.property is set.
-	@ConditionalOnResource("classpath:my.properties"). The condition is true if my.properties exists.
-	@ConditionalOnSingleCandidate(DataSource.class). Matches if there is exactly one primary DataSource bean specified in your application.
-	@ConditionalOnWebApplication. The condition is true if the application is a web application.
+`@ConditionalOnBean(DataSource.class)`:: The condition is true only if the user specified a DataSource @Bean in a @Configuration.
+`@ConditionalOnClass(DataSource.class)`:: The condition is true if the DataSource class is on the classpath.
+`@ConditionalOnCloudPlatform(CloudPlatform.Heroku)`:: The condition is true if the CloudPlatform is set to Heroku.
+`@ConditionalOnExpression("someSpELExpression)`:: The condition is true if the SpEL expression is true.
+`@ConditionalOnJava(JavaVersion.EIGHT)`:: The condition is true if the current Java version is 8.
+`@ConditionalOnJndi("java:comp/env/ejb/myEJB")`:: The condition is true if the specified JNDI context exists.
+`@ConditionalOnMissingBean(DataSource.class)`:: The condition is true if the user did not specify a DataSource @Bean in any @Configuration.
+`@ConditionalOnMissingClass(DataSource.class)`:: The condition is true if the DataSource class is not on the classpath.
+`@ConditionalOnNotWebApplication`:: The condition is true if the application is not a web application.
+`@ConditionalOnProperty("my.property")`:: The condition is true if my.property is set.
+`@ConditionalOnResource("classpath:my.properties")`:: The condition is true if my.properties exists.
+`@ConditionalOnSingleCandidate(DataSource.class)`:: Matches if there is exactly one primary DataSource bean specified in your application.
+`@ConditionalOnWebApplication`:: The condition is true if the application is a web application.
 
 == Property Sources
 
 A Property Source can be any one standard ones that Spring Boot looks up, in an order of precedence. The lowest numbered ones are overridden by the highe numbered ones.
 
-1. Default properties (specified by setting SpringApplication.setDefaultProperties).
-2. @PropertySource annotations on your @Configuration classes. Please note that such property sources are not added to the Environment until the application context is being refreshed. This is too late to configure certain properties such as logging.* and spring.main.* which are read before refresh begins.
-3. Config data (such as application.properties files)
-4. A RandomValuePropertySource that has properties only in random.*.
-5. OS environment variables.
-6. Java System properties (System.getProperties()).
-7. JNDI attributes from java:comp/env.
-8. ServletContext init parameters.
-9. ServletConfig init parameters.
-10. Properties from SPRING_APPLICATION_JSON (inline JSON embedded in an environment variable or system property).
-11. Command line arguments.
-12. properties attribute on your tests. Available on @SpringBootTest and the test annotations for testing a particular slice of your application.
-13. @TestPropertySource annotations on your tests.
-14. Devtools global settings properties in the $HOME/.config/spring-boot directory when devtools is active.
-15. Application properties packaged inside your jar (application.properties and YAML variants).
-16. Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
-17. Application properties outside of your packaged jar (application.properties and YAML variants).
-18. Profile-specific application properties outside of your packaged jar (application-{profile}.properties and YAML variants).
+. Default properties (specified by setting SpringApplication.setDefaultProperties).
+. @PropertySource annotations on your @Configuration classes. Please note that such property sources are not added to the Environment until the application context is being refreshed. This is too late to configure certain properties such as logging.* and spring.main.* which are read before refresh begins.
+. Config data (such as application.properties files)
+. A RandomValuePropertySource that has properties only in random.*.
+. OS environment variables.
+. Java System properties (System.getProperties()).
+. JNDI attributes from java:comp/env.
+. ServletContext init parameters.
+. ServletConfig init parameters.
+. Properties from SPRING_APPLICATION_JSON (inline JSON embedded in an environment variable or system property).
+. Command line arguments.
+. properties attribute on your tests. Available on @SpringBootTest and the test annotations for testing a particular slice of your application.
+. @TestPropertySource annotations on your tests.
+. Devtools global settings properties in the $HOME/.config/spring-boot directory when devtools is active.
+. Application properties packaged inside your jar (application.properties and YAML variants).
+. Profile-specific application properties packaged inside your jar (application-{profile}.properties and YAML variants).
+. Application properties outside of your packaged jar (application.properties and YAML variants).
+. Profile-specific application properties outside of your packaged jar (application-{profile}.properties and YAML variants).
 
 == ConfigurationProperties
 
-ConfigurationProperties allow for defining a new hierarchy of configurations that share a common prefix. These are best used for custom property loading. Some interesting rules apply:
+`ConfigurationProperties` allow for defining a new hierarchy of configurations that share a common prefix. These are best used for custom property loading. Some interesting rules apply:
 
-1. For a camelCase property preferredGreeting defined in a ConfigurationProperties class defined with prefix xyz:
+1. For a camelCase property `preferredGreeting` defined in a ConfigurationProperties class defined with prefix `xyz`:
 
 	@ConfigurationProperties(prefix="xyz")
 	public class CustomProperties {
@@ -67,11 +67,13 @@ ConfigurationProperties allow for defining a new hierarchy of configurations tha
 	preferredgreeting
 	PREFERRED_GREETING
 
-	. Properties Files - allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
-	. YAML Files - allow camel case, kebab case, or underscore notation - uses standard YAML list syntax or comma-separated values
-	. Environment Variables - allow upper case format with underscore as the delimiter. _ should not be used within a property name - uses numeric values surrounded by underscores, such as XYZ_NICKNAME_1_OTHER = xyz.nickName[1].other
-	. System properties - allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
+	. Properties Files:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
+	. YAML Files:: allow camel case, kebab case, or underscore notation - uses standard YAML list syntax or comma-separated values
+	. Environment Variables:: allow upper case format with underscore as the delimiter. _ should not be used within a property name - uses numeric values surrounded by underscores, such as XYZ_NICKNAME_1_OTHER = xyz.nickName[1].other
+	. System properties:: allow camel case, kebab case, or underscore notation - uses standard list syntax using [ ] or comma-separated values
 
-2. Should you declare a ConfigurationProperties, unless you specify @SpringBootApplication, you should specify a @EnableConfigurationProperties. A prime example of where this is useful, is in the @SpringBootTest(classes=CustomProperties.class), which, if not annotated with @EnableConfigurationProperties. The @Value annotation that reads a specific value from a property source, is somewhat different since it does not actually need field injection as is produced by using @ConfigurationPrperties.
+2. Should you declare a `@ConfigurationProperties`, unless you specify `@SpringBootApplication`, you should specify a `@EnableConfigurationProperties`. A prime example of where this is useful, is in the `@SpringBootTest(classes=CustomProperties.class)`, which, is not auto-annotated with `@EnableConfigurationProperties`. The `@Value` annotation that reads a specific value from a property source, is somewhat different since it does not actually need field injection as is produced by using `@ConfigurationPrperties`.
 
-3. ConfigurationProperties require mutators to set values. In order to achieve immutability, a @ConstructorBinding can be used. An @EnableConfigurationProperties is most-likely required when using @ConstructorBinding, since beans created using @Component or @Bean and those using @Import will not know how to bind. 
+3. ConfigurationProperties require mutators to set values. In order to achieve immutability, a `@ConstructorBinding` can be used (either on the class if there is only one constructor, and on a constructor if there are more than one). An `@EnableConfigurationProperties` is most-likely required when using `@ConstructorBinding`, since beans created using `@Component` or `@Bean` and those using `@Import` will not know how to bind. 
+
+
